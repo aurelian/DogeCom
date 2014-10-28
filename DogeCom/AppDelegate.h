@@ -7,14 +7,16 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "DogeMonitor.h"
 
+#import "DogeMonitor.h"
 #import "SchnitzelManager.h"
+#import "DogePreferencesController.h"
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 {
     IBOutlet NSMenu *statusMenu;
     NSStatusItem *statusItem;
+    DogePreferencesController *preferencesController;
 }
 
 - (IBAction)doPreferences:(id)sender;

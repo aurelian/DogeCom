@@ -18,6 +18,8 @@
 		0C90A7C61918E5A7007FFD61 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C90A7C41918E5A7007FFD61 /* MainMenu.xib */; };
 		0C90A7C81918E5A7007FFD61 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C90A7C71918E5A7007FFD61 /* Images.xcassets */; };
 		0C90A7D01918E5A7007FFD61 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C90A7AF1918E5A7007FFD61 /* Cocoa.framework */; };
+		0CA25EC21A00535E00864F7A /* DogePreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA25EC11A00535E00864F7A /* DogePreferencesController.m */; };
+		0CA25EC51A0054A100864F7A /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CA25EC41A0054A100864F7A /* Preferences.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +54,9 @@
 		0C90A7C51918E5A7007FFD61 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		0C90A7C71918E5A7007FFD61 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		0C90A7CD1918E5A7007FFD61 /* DogeComTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DogeComTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0CA25EC11A00535E00864F7A /* DogePreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DogePreferencesController.m; sourceTree = "<group>"; };
+		0CA25EC31A00537C00864F7A /* DogePreferencesController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DogePreferencesController.h; sourceTree = "<group>"; };
+		0CA25EC41A0054A100864F7A /* Preferences.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Preferences.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +130,9 @@
 				0C16013E19191918001DF7AE /* DogeMonitor.m */,
 				0C502EFF191AD3DC00CAC926 /* SchnitzelManager.h */,
 				0C502F00191AD3DC00CAC926 /* SchnitzelManager.m */,
+				0CA25EC11A00535E00864F7A /* DogePreferencesController.m */,
+				0CA25EC31A00537C00864F7A /* DogePreferencesController.h */,
+				0CA25EC41A0054A100864F7A /* Preferences.xib */,
 			);
 			path = DogeCom;
 			sourceTree = "<group>";
@@ -221,6 +229,7 @@
 				0C90A7C81918E5A7007FFD61 /* Images.xcassets in Resources */,
 				0C90A7C01918E5A7007FFD61 /* Credits.rtf in Resources */,
 				0C90A7C61918E5A7007FFD61 /* MainMenu.xib in Resources */,
+				0CA25EC51A0054A100864F7A /* Preferences.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -239,6 +248,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0C502F01191AD3DC00CAC926 /* SchnitzelManager.m in Sources */,
+				0CA25EC21A00535E00864F7A /* DogePreferencesController.m in Sources */,
 				0C90A7C31918E5A7007FFD61 /* AppDelegate.m in Sources */,
 				0C783C74191CEE8A00D7A24C /* DogeDevice.m in Sources */,
 				0C90A7BC1918E5A7007FFD61 /* main.m in Sources */,
