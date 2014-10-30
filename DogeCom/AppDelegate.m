@@ -12,13 +12,12 @@
 
 - (IBAction)doPreferences:(id)sender
 {
-    NSLog(@"preferences.");
     
-    if (!preferencesController) {
-        preferencesController = [[DogePreferencesController alloc] init];
+    if (!preferencesController)
+    {
+        preferencesController = [[DogePreferencesController alloc] initWithWindowNibName:@"Preferences"];
     }
-    
-    [preferencesController showWindow:self];
+    [preferencesController showWindow:self];    
 }
 
 - (IBAction)doAbout:(id)sender

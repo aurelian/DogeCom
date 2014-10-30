@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Aurelian Oancea. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <Cocoa/Cocoa.h>
 
 @interface DogePreferencesController : NSWindowController
 

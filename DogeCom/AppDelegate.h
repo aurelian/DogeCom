@@ -12,6 +12,8 @@
 #import "SchnitzelManager.h"
 #import "DogePreferencesController.h"
 
+@class DogePreferencesController;
+
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 {
     IBOutlet NSMenu *statusMenu;

@@ -8,13 +8,22 @@
 
 #import "DogePreferencesController.h"
 
+@interface DogePreferencesController ()
+
+@end
+
 @implementation DogePreferencesController
 
--(id) init
+- (id)initWithWindow:(NSWindow *)window
 {
-    self = [super initWithWindowNibName:@"Preferences"];
+    self = [super initWithWindow:window];
     
     return self;
+}
+
+- (void)windowDidLoad {
+    NSLog(@"Nib file is loaded");
+    [super windowDidLoad];
 }
 
 @end
