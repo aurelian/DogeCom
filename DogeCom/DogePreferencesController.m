@@ -8,11 +8,9 @@
 
 #import "DogePreferencesController.h"
 
-@interface DogePreferencesController ()
-
-@end
-
 @implementation DogePreferencesController
+
+@synthesize sendNotificationCheckbox;
 
 - (id)initWithWindow:(NSWindow *)window
 {
@@ -21,9 +19,24 @@
     return self;
 }
 
+/*
 - (void)windowDidLoad {
-    NSLog(@"Nib file is loaded");
+    NSLog(@"---> window loaded");
+    
     [super windowDidLoad];
+}
+*/
+
+-(void) awakeFromNib {
+    NSLog(@"---> awake from nib");
+    
+    [self.sendNotificationCheckbox
+            setState:[[NSUserDefaults standardUserDefaults] boolForKey:@"SendNotification" ]];
+}
+
+-(IBAction) toggleSendNotification:(id)sender {
+    [[NSUserDefaults standardUserDefaults]
+            setBool:[self.sendNotificationCheckbox state] forKey:@"SendNotification" ];
 }
 
 @end

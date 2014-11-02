@@ -8,6 +8,12 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface DogePreferencesController : NSWindowController
+@interface DogePreferencesController : NSWindowController {
+    NSButton *sendNotificationCheckbox;
+}
+
+@property IBOutlet NSButton *sendNotificationCheckbox;
+
+-(IBAction) toggleSendNotification: (id)sender;
 
 @end

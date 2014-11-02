@@ -17,7 +17,14 @@
     {
         preferencesController = [[DogePreferencesController alloc] initWithWindowNibName:@"Preferences"];
     }
-    [preferencesController showWindow:self];    
+    
+    [preferencesController showWindow:self];
+    
+    [[preferencesController window] orderFrontRegardless];
+    
+    // somehow I does not have focus here
+    // [[preferencesController window] makeKeyAndOrderFront:self];
+    
 }
 
 - (IBAction)doAbout:(id)sender
@@ -37,6 +44,9 @@
     [statusItem setMenu:statusMenu];
     [statusItem setImage:[NSImage imageNamed:@"doge"]];
     [statusItem setHighlightMode:YES];
+    
+    NSDictionary *defaults = [NSDictionary dictionaryWithObject:@"NO" forKey:@"SendNotification"];
+    [[NSUserDefaults standardUserDefaults] registerDefaults:defaults];
     
     SchnitzelManager *schnitzel = [[SchnitzelManager alloc] init];
     [schnitzel detectDevices];
