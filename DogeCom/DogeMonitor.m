@@ -55,9 +55,17 @@ void fsEventCallback(ConstFSEventStreamRef streamRef,
 
 -(void) trackCreated:(NSURL *)trackFile
 {
-    NSLog(@"--> Created: %@", trackFile);
-    [self.manager sendUserNotification:trackFile];
+    NSLog(@"--> created: %@", trackFile);
+    
+    if([self shouldSendNotification]) {
+      [self.manager sendUserNotification:trackFile];
+    }
+    
     [self.manager copyFile:trackFile];
+}
+
+-(BOOL) shouldSendNotification {
+    return [[NSUserDefaults standardUserDefaults] boolForKey:@"SendNotification" ];
 }
 
 void fsEventCallback(ConstFSEventStreamRef streamRef,
