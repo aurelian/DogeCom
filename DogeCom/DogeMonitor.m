@@ -58,14 +58,19 @@ void fsEventCallback(ConstFSEventStreamRef streamRef,
     NSLog(@"--> created: %@", trackFile);
     
     if([self shouldSendNotification]) {
-      [self.manager sendUserNotification:trackFile];
+        [self.manager sendUserNotification:trackFile];
     }
-    
-    [self.manager copyFile:trackFile];
+    if([self shouldDuplicateFile]) {
+        [self.manager copyFile:trackFile];
+    }
 }
 
 -(BOOL) shouldSendNotification {
     return [[NSUserDefaults standardUserDefaults] boolForKey:@"SendNotification" ];
+}
+
+-(BOOL) shouldDuplicateFile {
+    return [[NSUserDefaults standardUserDefaults] boolForKey:@"DuplicateFile" ];
 }
 
 void fsEventCallback(ConstFSEventStreamRef streamRef,
@@ -95,5 +100,3 @@ void fsEventCallback(ConstFSEventStreamRef streamRef,
 }
 
 @end
-
-

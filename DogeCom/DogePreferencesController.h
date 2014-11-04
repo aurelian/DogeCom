@@ -10,10 +10,13 @@
 
 @interface DogePreferencesController : NSWindowController {
     NSButton *sendNotificationCheckbox;
+    NSButton *duplicateFileCheckbox;
 }
 
 @property IBOutlet NSButton *sendNotificationCheckbox;
+@property IBOutlet NSButton *duplicateFileCheckbox; // cannot use copyFileCheckbox :D
 
 -(IBAction) toggleSendNotification: (id)sender;
+-(IBAction) toggleDuplicateFile: (id)sender;
 
 @end

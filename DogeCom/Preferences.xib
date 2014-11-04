@@ -6,6 +6,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="DogePreferencesController">
             <connections>
+                <outlet property="duplicateFileCheckbox" destination="K3g-3q-fuO" id="BaK-VL-Bma"/>
                 <outlet property="sendNotificationCheckbox" destination="Vs3-pw-Kad" id="pi2-C2-HDf"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="IWs-2D-UqH"/>
             </connections>
@@ -36,6 +37,9 @@
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
+                        <connections>
+                            <action selector="toggleDuplicateFile:" target="-2" id="ZN6-7l-DqG"/>
+                        </connections>
                     </button>
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vs3-pw-Kad">
                         <rect key="frame" x="42" y="204" width="138" height="18"/>

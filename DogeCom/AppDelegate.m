@@ -45,7 +45,9 @@
     [statusItem setImage:[NSImage imageNamed:@"doge"]];
     [statusItem setHighlightMode:YES];
     
-    NSDictionary *defaults = [NSDictionary dictionaryWithObject:@"NO" forKey:@"SendNotification"];
+    NSDictionary *defaults = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"NO", @"NO", nil]
+                                                         forKeys:[NSArray arrayWithObjects:@"SendNotification", @"DuplicateFile", nil]];
+    
     [[NSUserDefaults standardUserDefaults] registerDefaults:defaults];
     
     SchnitzelManager *schnitzel = [[SchnitzelManager alloc] init];
