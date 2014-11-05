@@ -8,6 +8,8 @@
 
 #import <Cocoa/Cocoa.h>
 
+// TODO: dude... wtf, checkout NSUserDefaultsController LOL
+
 @interface DogePreferencesController : NSWindowController {
     NSButton *sendNotificationCheckbox;
     NSButton *duplicateFileCheckbox;
