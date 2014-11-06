@@ -12,6 +12,7 @@
 
 @synthesize sendNotificationCheckbox;
 @synthesize duplicateFileCheckbox;
+@synthesize duplicateDestination;
 
 - (id)initWithWindow:(NSWindow *)window
 {
@@ -36,6 +37,8 @@
     
     [self.duplicateFileCheckbox
             setState:[[NSUserDefaults standardUserDefaults] boolForKey:@"DuplicateFile" ]];
+    
+    [self.duplicateDestination setStringValue:@"Hello!"]; // NOO
 }
 
 -(IBAction) toggleSendNotification:(id)sender {
@@ -46,6 +49,20 @@
 -(IBAction) toggleDuplicateFile:(id)sender {
     [[NSUserDefaults standardUserDefaults]
      setBool:[self.duplicateFileCheckbox state] forKey:@"DuplicateFile" ];
+}
+
+-(IBAction) selectDupicateDestination:(id)sender {
+    NSOpenPanel *panel = [NSOpenPanel openPanel];
+    [panel setCanChooseFiles:NO];
+    [panel setCanChooseDirectories:YES];
+    [panel setCanCreateDirectories:YES];
+    [panel setAllowsMultipleSelection:NO];
+    [panel setPrompt:@"Select"];
+
+    if ([panel runModal] == NSModalResponseOK) {
+        NSURL* url = [panel URL];
+        NSLog(@"url: %@",url);
+    }
 }
 
 @end
