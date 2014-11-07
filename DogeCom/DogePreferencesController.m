@@ -21,34 +21,27 @@
     return self;
 }
 
-/*
-- (void)windowDidLoad {
-    NSLog(@"---> window loaded");
-    
-    [super windowDidLoad];
-}
-*/
-
 -(void) awakeFromNib {
     NSLog(@"---> awake from nib");
     
-    [self.sendNotificationCheckbox
-            setState:[[NSUserDefaults standardUserDefaults] boolForKey:@"SendNotification" ]];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
-    [self.duplicateFileCheckbox
-            setState:[[NSUserDefaults standardUserDefaults] boolForKey:@"DuplicateFile" ]];
+    [self.sendNotificationCheckbox setState:[defaults boolForKey:@"SendNotification"]];
     
-    [self.duplicateDestination setStringValue:@"Hello!"]; // NOO
+    [self.duplicateFileCheckbox setState:[defaults boolForKey:@"DuplicateFile"]];
+    
+    [self.duplicateDestination setStringValue: [defaults stringForKey:@"DuplicateFileUrl"]];
+    // [[defaults URLForKey:@"DuplicateFileUrl"] description]];
 }
 
 -(IBAction) toggleSendNotification:(id)sender {
     [[NSUserDefaults standardUserDefaults]
-            setBool:[self.sendNotificationCheckbox state] forKey:@"SendNotification" ];
+            setBool:[self.sendNotificationCheckbox state] forKey:@"SendNotification"];
 }
 
 -(IBAction) toggleDuplicateFile:(id)sender {
     [[NSUserDefaults standardUserDefaults]
-     setBool:[self.duplicateFileCheckbox state] forKey:@"DuplicateFile" ];
+            setBool:[self.duplicateFileCheckbox state] forKey:@"DuplicateFile"];
 }
 
 -(IBAction) selectDupicateDestination:(id)sender {
@@ -60,8 +53,9 @@
     [panel setPrompt:@"Select"];
 
     if ([panel runModal] == NSModalResponseOK) {
-        NSURL* url = [panel URL];
-        NSLog(@"url: %@",url);
+        [self.duplicateDestination setStringValue:[[panel URL] description]];
+        NSLog(@"-- url: %@", [[panel URL] description]);
+        [[NSUserDefaults standardUserDefaults] setValue:[[panel URL] description] forKey:@"DuplicateFileUrl"];
     }
 }
 

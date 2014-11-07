@@ -45,9 +45,9 @@
     [statusItem setImage:[NSImage imageNamed:@"doge"]];
     [statusItem setHighlightMode:YES];
     
-    // TODO - read from plist. via NSBundle.
-    NSDictionary *defaults = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"NO", @"NO", nil]
-                                                         forKeys:[NSArray arrayWithObjects:@"SendNotification", @"DuplicateFile", nil]];
+    // TODO - maybe read from plist. via NSBundle.
+    NSDictionary *defaults = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"YES", @"YES", [[NSURL fileURLWithPath:NSHomeDirectory()] description], nil]
+                                                         forKeys:[NSArray arrayWithObjects:@"SendNotification", @"DuplicateFile", @"DuplicateFileUrl", nil]];
     
     [[NSUserDefaults standardUserDefaults] registerDefaults:defaults];
     
