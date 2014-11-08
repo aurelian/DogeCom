@@ -11,7 +11,7 @@
 @implementation SchnitzelManager
 
 @synthesize devices = _devices;
-@synthesize cloud   = _cloud;
+@synthesize duplicateFileDestination = _duplicateFileDestination;
 @synthesize fm      = _fm;
 
 - (id) init
@@ -20,7 +20,9 @@
     {
         _fm      = [NSFileManager defaultManager];
         _devices = [NSMutableArray array];
-        _cloud   = [[NSURL fileURLWithPath:NSHomeDirectory()] URLByAppendingPathComponent:@"Cloud Drive/Garmin Logs"];
+        
+        NSString *path= [[NSUserDefaults standardUserDefaults] stringForKey:@"DuplicateFileUrl"];
+        _duplicateFileDestination = [NSURL URLWithString:path];
     }
     return self;
 }
@@ -88,12 +90,12 @@
 {
     
     // transforms: Garmin/Devices/.../foo.txt to Cloud/..../foo.txt
-    NSURL * cloudFile = [_cloud URLByAppendingPathComponent:[deviceFile lastPathComponent]];
+    NSURL * cloudFile = [_duplicateFileDestination URLByAppendingPathComponent:[deviceFile lastPathComponent]];
     
     // TODO: check if file is a valid track
     
     // TODO: see comment on fileExistsAtPath
-    if(![_fm fileExistsAtPath:[cloudFile path]]  )
+    if(![_fm fileExistsAtPath:[cloudFile path]])
     {
         // TODO: check for error
         [_fm copyItemAtURL:deviceFile toURL:cloudFile error:nil];

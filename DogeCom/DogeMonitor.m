@@ -93,6 +93,7 @@ void fsEventCallback(ConstFSEventStreamRef streamRef,
             {
                 // converts char * paths[i] to a path suitable for NSURL
                 NSURL *file = [NSURL fileURLWithPath:[[NSString stringWithFormat:@"%s", paths[i]] stringByExpandingTildeInPath]];
+                // TODO - notify manager what file was created and refactor related code
                 [monitor trackCreated:file];
             }
         }
