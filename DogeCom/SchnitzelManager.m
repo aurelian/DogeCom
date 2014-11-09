@@ -21,6 +21,7 @@
         _fm      = [NSFileManager defaultManager];
         _devices = [NSMutableArray array];
         
+        // TODO -- read this value when needed
         NSString *path= [[NSUserDefaults standardUserDefaults] stringForKey:@"DuplicateFileUrl"];
         _duplicateFileDestination = [NSURL URLWithString:path];
     }
@@ -85,6 +86,17 @@
 }
 */
 
+// this is called by monitor when a new file is created.
+-(void) trackCreated:(NSURL *)trackFile
+{
+    if([[NSUserDefaults standardUserDefaults] boolForKey:@"SendNotification"]) {
+        [self sendUserNotification:trackFile];
+    }
+    if([[NSUserDefaults standardUserDefaults] boolForKey:@"DuplicateFile"]) {
+        [self copyFile:trackFile];
+    }
+}
+
 // copy file from device if not already copied.
 -(void) copyFile:(NSURL *)deviceFile
 {
@@ -127,7 +139,7 @@
         NSURL *url = [_devices[i] tracksURL];
         [paths addObject:url.path];
     }
-    
+
     return paths;
 }
 

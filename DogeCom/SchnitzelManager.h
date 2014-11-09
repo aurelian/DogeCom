@@ -21,6 +21,7 @@
 - (void) detectDevices;
 - (void) syncExistingFiles;
 
+- (void) trackCreated:(NSURL *)trackFile;
 - (void) copyFile:(NSURL *)deviceFile;
 - (void) sendUserNotification:(NSURL *)deviceFile;
 

@@ -38,9 +38,8 @@ void fsEventCallback(ConstFSEventStreamRef streamRef,
 - (void) startMonitoring
 {
     FSEventStreamContext reference = {0, (__bridge_retained void *)self, NULL, NULL, NULL};
-    
+
     // TODO: check if stream is NULL, if is not, stopMonitorig and redo.
-    
     stream = FSEventStreamCreate(NULL,
                                  &fsEventCallback,
                                  &reference,
@@ -48,29 +47,9 @@ void fsEventCallback(ConstFSEventStreamRef streamRef,
                                  kFSEventStreamEventIdSinceNow,
                                  3.0,
                                  kFSEventStreamCreateFlagFileEvents);
-    
+
     FSEventStreamScheduleWithRunLoop(stream, CFRunLoopGetCurrent(), kCFRunLoopDefaultMode);
     FSEventStreamStart(stream);
-}
-
--(void) trackCreated:(NSURL *)trackFile
-{
-    NSLog(@"--> created: %@", trackFile);
-    
-    if([self shouldSendNotification]) {
-        [self.manager sendUserNotification:trackFile];
-    }
-    if([self shouldDuplicateFile]) {
-        [self.manager copyFile:trackFile];
-    }
-}
-
--(BOOL) shouldSendNotification {
-    return [[NSUserDefaults standardUserDefaults] boolForKey:@"SendNotification" ];
-}
-
--(BOOL) shouldDuplicateFile {
-    return [[NSUserDefaults standardUserDefaults] boolForKey:@"DuplicateFile" ];
 }
 
 void fsEventCallback(ConstFSEventStreamRef streamRef,
@@ -81,20 +60,18 @@ void fsEventCallback(ConstFSEventStreamRef streamRef,
                      const FSEventStreamEventId eventIds[])
 {
     char **paths = eventPaths;
-    
     DogeMonitor *monitor= (__bridge DogeMonitor *)(clientCallBackInfo);
-    
+
     for(int i = 0; i < numEvents; i++)
     {
-        
         if(eventFlags[i] & kFSEventStreamEventFlagItemIsFile)
         {
             if(eventFlags[i]  & kFSEventStreamEventFlagItemCreated)
             {
                 // converts char * paths[i] to a path suitable for NSURL
                 NSURL *file = [NSURL fileURLWithPath:[[NSString stringWithFormat:@"%s", paths[i]] stringByExpandingTildeInPath]];
-                // TODO - notify manager what file was created and refactor related code
-                [monitor trackCreated:file];
+                NSLog(@"--> created: %@", file);
+                [monitor.manager trackCreated:file];
             }
         }
     }
