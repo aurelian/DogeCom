@@ -30,8 +30,8 @@
     
     [self.duplicateFileCheckbox setState:[defaults boolForKey:@"DuplicateFile"]];
     
+    // TODO -- remove percent encoding.
     [self.duplicateDestination setStringValue: [defaults stringForKey:@"DuplicateFileUrl"]];
-    // [[defaults URLForKey:@"DuplicateFileUrl"] description]];
 }
 
 -(IBAction) toggleSendNotification:(id)sender {

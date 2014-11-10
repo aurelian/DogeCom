@@ -14,7 +14,6 @@
 @interface SchnitzelManager : NSObject
 
 @property NSMutableArray *devices;
-@property NSURL          *duplicateFileDestination;
 @property NSFileManager  *fm;
 
 - (id) init;
@@ -25,6 +24,6 @@
 - (void) copyFile:(NSURL *)deviceFile;
 - (void) sendUserNotification:(NSURL *)deviceFile;
 
-- (NSMutableArray *) tracksPaths;
+- (NSMutableArray *)tracksPaths;
 
 @end
