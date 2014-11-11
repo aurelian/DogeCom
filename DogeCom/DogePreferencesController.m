@@ -22,16 +22,11 @@
 }
 
 -(void) awakeFromNib {
-    NSLog(@"---> awake from nib");
-    
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
     [self.sendNotificationCheckbox setState:[defaults boolForKey:@"SendNotification"]];
-    
     [self.duplicateFileCheckbox setState:[defaults boolForKey:@"DuplicateFile"]];
-    
-    // TODO -- remove percent encoding.
-    [self.duplicateDestination setStringValue: [defaults stringForKey:@"DuplicateFileUrl"]];
+    [self.duplicateDestination setStringValue:[defaults stringForKey:@"DuplicateFileUrl"]];
 }
 
 -(IBAction) toggleSendNotification:(id)sender {
@@ -46,6 +41,7 @@
 
 -(IBAction) selectDupicateDestination:(id)sender {
     NSOpenPanel *panel = [NSOpenPanel openPanel];
+    
     [panel setCanChooseFiles:NO];
     [panel setCanChooseDirectories:YES];
     [panel setCanCreateDirectories:YES];
@@ -53,9 +49,8 @@
     [panel setPrompt:@"Select"];
 
     if ([panel runModal] == NSModalResponseOK) {
-        [self.duplicateDestination setStringValue:[[panel URL] description]];
-        NSLog(@"-- url: %@", [[panel URL] description]);
-        [[NSUserDefaults standardUserDefaults] setValue:[[panel URL] description] forKey:@"DuplicateFileUrl"];
+        [self.duplicateDestination setStringValue:[[panel URL] path]];
+        [[NSUserDefaults standardUserDefaults] setValue:[[panel URL] path] forKey:@"DuplicateFileUrl"];
     }
 }
 

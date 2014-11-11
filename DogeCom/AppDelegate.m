@@ -46,14 +46,14 @@
     [statusItem setHighlightMode:YES];
     
     // TODO - maybe read from plist. via NSBundle.
-    NSDictionary *defaults = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"YES", @"YES", [[NSURL fileURLWithPath:NSHomeDirectory()] description], nil]
+    NSDictionary *defaults = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"YES", @"NO", [[NSURL fileURLWithPath:NSHomeDirectory()] path], nil]
                                                          forKeys:[NSArray arrayWithObjects:@"SendNotification", @"DuplicateFile", @"DuplicateFileUrl", nil]];
     
     [[NSUserDefaults standardUserDefaults] registerDefaults:defaults];
     
     SchnitzelManager *schnitzel = [[SchnitzelManager alloc] init];
     [schnitzel detectDevices];
-    [schnitzel syncExistingFiles];
+    // [schnitzel syncExistingFiles];
     
     DogeMonitor * monitor = [[DogeMonitor alloc] initWithManager:schnitzel];
     [monitor startMonitoring];
