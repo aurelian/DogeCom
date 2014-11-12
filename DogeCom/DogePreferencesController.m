@@ -13,6 +13,7 @@
 @synthesize sendNotificationCheckbox;
 @synthesize duplicateFileCheckbox;
 @synthesize duplicateDestination;
+@synthesize canChangeDuplicateFileDestination;
 
 - (id)initWithWindow:(NSWindow *)window
 {
@@ -27,6 +28,9 @@
     [self.sendNotificationCheckbox setState:[defaults boolForKey:@"SendNotification"]];
     [self.duplicateFileCheckbox setState:[defaults boolForKey:@"DuplicateFile"]];
     [self.duplicateDestination setStringValue:[defaults stringForKey:@"DuplicateFileUrl"]];
+    
+    self.canChangeDuplicateFileDestination = [self.duplicateFileCheckbox state];
+
 }
 
 -(IBAction) toggleSendNotification:(id)sender {
@@ -37,6 +41,8 @@
 -(IBAction) toggleDuplicateFile:(id)sender {
     [[NSUserDefaults standardUserDefaults]
             setBool:[self.duplicateFileCheckbox state] forKey:@"DuplicateFile"];
+    
+    self.canChangeDuplicateFileDestination = [self.duplicateFileCheckbox state];
 }
 
 -(IBAction) selectDupicateDestination:(id)sender {

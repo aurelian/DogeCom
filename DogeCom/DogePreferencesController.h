@@ -22,6 +22,8 @@
 @property IBOutlet NSButton *duplicateFileCheckbox;
 @property IBOutlet NSTextField *duplicateDestination;
 
+@property BOOL canChangeDuplicateFileDestination;
+
 -(IBAction) selectDupicateDestination:(id)sender;
 -(IBAction) toggleSendNotification: (id)sender;
 -(IBAction) toggleDuplicateFile: (id)sender;
