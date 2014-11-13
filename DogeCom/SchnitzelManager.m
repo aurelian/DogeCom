@@ -98,8 +98,8 @@
 
     // transforms: Garmin/Devices/.../foo.txt to Cloud/..../foo.txt
     NSString *path    = [[NSUserDefaults standardUserDefaults] stringForKey:@"DuplicateFileUrl"];
-    NSURL * cloudFile = [[NSURL URLWithString:path] URLByAppendingPathComponent:[deviceFile lastPathComponent]];
-
+    NSURL * cloudFile = [[NSURL URLWithString:[path stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]] URLByAppendingPathComponent:[deviceFile lastPathComponent]];
+    
     // TODO: check if file is a valid track
 
     // TODO: see comment on fileExistsAtPath
