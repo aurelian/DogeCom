@@ -12,6 +12,9 @@
 #import "SchnitzelManager.h"
 #import "DogePreferencesController.h"
 
+// TODO -- use NSNotificationCenter to broadcast notifications instead of passing the schnitzel
+// TODO -- coding style.
+
 @class DogePreferencesController;
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>
@@ -19,6 +22,7 @@
     IBOutlet NSMenu *statusMenu;
     NSStatusItem *statusItem;
     DogePreferencesController *preferencesController;
+    SchnitzelManager *schnitzel;
 }
 
 - (IBAction)doPreferences:(id)sender;

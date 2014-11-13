@@ -25,7 +25,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Ps-ha-Yqh">
-                        <rect key="frame" x="20" y="228" width="220" height="22"/>
+                        <rect key="frame" x="18" y="228" width="220" height="22"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="When a new file is added:" drawsBackground="YES" id="jTf-Rg-8Dy">
                             <font key="font" size="18" name=".HelveticaNeueDeskInterface-Regular"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -33,7 +33,7 @@
                         </textFieldCell>
                     </textField>
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K3g-3q-fuO">
-                        <rect key="frame" x="42" y="184" width="116" height="18"/>
+                        <rect key="frame" x="27" y="184" width="116" height="18"/>
                         <buttonCell key="cell" type="check" title="Copy the file to" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="1q1-8j-cEs">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
@@ -43,7 +43,7 @@
                         </connections>
                     </button>
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vs3-pw-Kad">
-                        <rect key="frame" x="42" y="204" width="138" height="18"/>
+                        <rect key="frame" x="27" y="204" width="138" height="18"/>
                         <buttonCell key="cell" type="check" title="Send a notification" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="5q9-kG-htU">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
@@ -64,13 +64,27 @@
                         </connections>
                     </button>
                     <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bhe-8A-6f5">
-                        <rect key="frame" x="60" y="156" width="316" height="22"/>
+                        <rect key="frame" x="36" y="156" width="340" height="22"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="pxf-j6-835">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
+                        <connections>
+                            <binding destination="-2" name="enabled" keyPath="canChangeDuplicateFileDestination" id="U8b-mi-V6W"/>
+                        </connections>
                     </textField>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CNG-Me-BTW">
+                        <rect key="frame" x="30" y="120" width="156" height="32"/>
+                        <buttonCell key="cell" type="push" title="Sync Existing Files" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="65D-9v-OzX">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="syncExistingFiles:" target="-2" id="CvK-Yz-lme"/>
+                            <binding destination="-2" name="enabled" keyPath="canChangeDuplicateFileDestination" id="30Z-jg-dBl"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
         </window>

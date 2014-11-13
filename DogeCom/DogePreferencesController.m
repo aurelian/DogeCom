@@ -15,6 +15,13 @@
 @synthesize duplicateDestination;
 @synthesize canChangeDuplicateFileDestination;
 
+-(id)initWithManager:(SchnitzelManager *)aManager
+{
+    self = [super initWithWindowNibName:@"Preferences"];
+    self.manager = aManager;
+    return self;
+}
+
 - (id)initWithWindow:(NSWindow *)window
 {
     self = [super initWithWindow:window];
@@ -23,6 +30,8 @@
 }
 
 -(void) awakeFromNib {
+    NSLog(@"-- awake from Nib");
+    
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
     [self.sendNotificationCheckbox setState:[defaults boolForKey:@"SendNotification"]];
@@ -43,6 +52,11 @@
             setBool:[self.duplicateFileCheckbox state] forKey:@"DuplicateFile"];
     
     self.canChangeDuplicateFileDestination = [self.duplicateFileCheckbox state];
+}
+
+-(IBAction)syncExistingFiles:(id)sender {
+    // TODO -- non-blocking maybe?
+    [self.manager syncExistingFiles];
 }
 
 -(IBAction) selectDupicateDestination:(id)sender {

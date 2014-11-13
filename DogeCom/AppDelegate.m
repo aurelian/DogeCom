@@ -15,14 +15,12 @@
     
     if (!preferencesController)
     {
-        preferencesController = [[DogePreferencesController alloc] initWithWindowNibName:@"Preferences"];
+        preferencesController = [[DogePreferencesController alloc] initWithManager:schnitzel];
     }
-    
     [preferencesController showWindow:self];
-    
     [[preferencesController window] orderFrontRegardless];
     
-    // somehow I does not have focus here
+    // somehow I does not have focus here and this doesn't help
     // [[preferencesController window] makeKeyAndOrderFront:self];
     
 }
@@ -51,9 +49,8 @@
     
     [[NSUserDefaults standardUserDefaults] registerDefaults:defaults];
     
-    SchnitzelManager *schnitzel = [[SchnitzelManager alloc] init];
+    schnitzel = [[SchnitzelManager alloc] init];
     [schnitzel detectDevices];
-    // [schnitzel syncExistingFiles];
     
     DogeMonitor * monitor = [[DogeMonitor alloc] initWithManager:schnitzel];
     [monitor startMonitoring];
