@@ -8,6 +8,8 @@
 
 #import "SchnitzelManager.h"
 
+// TODO NSError stuff should do some UI level enterprise stuff
+
 @implementation SchnitzelManager
 
 @synthesize devices = _devices;
@@ -98,16 +100,23 @@
 
     // transforms: Garmin/Devices/.../foo.txt to Cloud/..../foo.txt
     NSString *path    = [[NSUserDefaults standardUserDefaults] stringForKey:@"DuplicateFileUrl"];
-    NSURL * cloudFile = [[NSURL URLWithString:[path stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]] URLByAppendingPathComponent:[deviceFile lastPathComponent]];
+    
+    NSURL *cloudFile = [[NSURL fileURLWithPath:path isDirectory:true] URLByAppendingPathComponent:[deviceFile lastPathComponent]];
     
     // TODO: check if file is a valid track
 
     // TODO: see comment on fileExistsAtPath
     if(![_fm fileExistsAtPath:[cloudFile path]])
     {
-        // TODO: check for error
-        [_fm copyItemAtURL:deviceFile toURL:cloudFile error:nil];
-        NSLog(@"+++> %@ -> %@", deviceFile, cloudFile);
+        NSError *error = nil;
+        [_fm copyItemAtURL:deviceFile
+                     toURL:cloudFile
+                     error:&error];
+        if(error != nil) {
+            NSLog(@"[MEGA FAIL] copy %@ to %@\tfailed with %@", deviceFile, cloudFile, error);
+        } else {
+           NSLog(@"+++> %@ -> %@", deviceFile, cloudFile);
+        }
     } else {
         NSLog(@"---> %@ -> %@", deviceFile, cloudFile);
     }
