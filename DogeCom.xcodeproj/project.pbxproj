@@ -19,6 +19,7 @@
 		0C90A7C81918E5A7007FFD61 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C90A7C71918E5A7007FFD61 /* Images.xcassets */; };
 		0C90A7D01918E5A7007FFD61 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C90A7AF1918E5A7007FFD61 /* Cocoa.framework */; };
 		0CA25EC21A00535E00864F7A /* DogePreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA25EC11A00535E00864F7A /* DogePreferencesController.m */; };
+		0CA7036F1A0D3145004F29CD /* Defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0CA7036E1A0D3145004F29CD /* Defaults.plist */; };
 		0CF0A84C1A0150D000D0207B /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CF0A84B1A0150D000D0207B /* Preferences.xib */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +57,7 @@
 		0C90A7CD1918E5A7007FFD61 /* DogeComTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DogeComTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CA25EC11A00535E00864F7A /* DogePreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DogePreferencesController.m; sourceTree = "<group>"; };
 		0CA25EC31A00537C00864F7A /* DogePreferencesController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DogePreferencesController.h; sourceTree = "<group>"; };
+		0CA7036E1A0D3145004F29CD /* Defaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Defaults.plist; path = ../Defaults.plist; sourceTree = "<group>"; };
 		0CF0A84B1A0150D000D0207B /* Preferences.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Preferences.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -140,6 +142,7 @@
 		0C90A7B61918E5A7007FFD61 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				0CA7036E1A0D3145004F29CD /* Defaults.plist */,
 				0C90A7B71918E5A7007FFD61 /* DogeCom-Info.plist */,
 				0C90A7B81918E5A7007FFD61 /* InfoPlist.strings */,
 				0C90A7BB1918E5A7007FFD61 /* main.m */,
@@ -227,6 +230,7 @@
 			files = (
 				0C90A7BA1918E5A7007FFD61 /* InfoPlist.strings in Resources */,
 				0C90A7C81918E5A7007FFD61 /* Images.xcassets in Resources */,
+				0CA7036F1A0D3145004F29CD /* Defaults.plist in Resources */,
 				0C90A7C01918E5A7007FFD61 /* Credits.rtf in Resources */,
 				0C90A7C61918E5A7007FFD61 /* MainMenu.xib in Resources */,
 				0CF0A84C1A0150D000D0207B /* Preferences.xib in Resources */,

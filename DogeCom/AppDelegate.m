@@ -38,9 +38,12 @@
 - (void) applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSSquareStatusItemLength];
-    
     [statusItem setMenu:statusMenu];
-    [statusItem setImage:[NSImage imageNamed:@"doge"]];
+    
+    NSImage *image = [NSImage imageNamed:@"doge"];
+    [image setTemplate:YES];
+    
+    [statusItem setImage:image];
     [statusItem setHighlightMode:YES];
     
     // TODO - maybe read from plist. via NSBundle.

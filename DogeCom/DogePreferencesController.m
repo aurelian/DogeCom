@@ -30,8 +30,6 @@
 }
 
 -(void) awakeFromNib {
-    NSLog(@"-- awake from Nib");
-    
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
     [self.sendNotificationCheckbox setState:[defaults boolForKey:@"SendNotification"]];
@@ -55,7 +53,6 @@
 }
 
 -(IBAction)syncExistingFiles:(id)sender {
-    // TODO -- non-blocking maybe?
     [self.manager syncExistingFiles];
 }
 
